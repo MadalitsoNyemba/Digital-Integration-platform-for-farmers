@@ -24,7 +24,7 @@ export class Home extends Component {
         this.setState({categories});
     }
     static navigationOptions = ({navigation}) => ({
-        title:'Netmall Home',
+        title:'Mobile Market',
         headerTintColor:'#fff',            
         headerTitleStyle : {textAlign: 'center', alignSelf: 'center'},
         headerStyle:{backgroundColor:'#f4511e'},
@@ -32,19 +32,7 @@ export class Home extends Component {
     render(){
         return (
             <Container>
-                                <StatusBar backgroundColor="#f4511e" />
-
-                {/* <Header noShadow>
-                    
-                    <Body>
-                        <Title>Netmall Home</Title>
-                    </Body>
-                    <Right>
-                        <Button transparent>
-                            <Icon type="FontAwesome" name="refresh"  />
-                        </Button>
-                    </Right>
-                </Header>  */}
+            <StatusBar backgroundColor="#f4511e" />
                 <Content>
                     <View>
                     <List>
@@ -55,12 +43,7 @@ export class Home extends Component {
                                     renderItem={({ item }) =>                
                                     (   
                             <Card style={{ elevation: 1,borderRadius:4,margin:9, }}>
-                                <CardItem button  onPress = {() =>this.props.navigation.navigate('Category',{
-                                            name:item.category,
-                                            id:item.id,
-
-                                            })
-                                            }>
+                                <CardItem>
                                     <Left>
                                     <Thumbnail source={{ uri: item.image }} />
                                         <Body>
@@ -97,17 +80,7 @@ export class Home extends Component {
                                         </Body>
                                     </Left>
                                 </CardItem>
-                                <CardItem cardBody button onPress = {() =>this.props.navigation.navigate
-                                            ('SingleProduct',{
-                                                name:item.item_name,
-                                                price:item.price,
-                                                shop_name:item.shop_name,
-                                                quantity:item.quantity,
-                                                item_number:item.item_number,
-                                                image:item.image,
-                                                id:item.id,
-    
-                                                })}>
+                                <CardItem cardBody button >
                                     <Image  style={{ height: 180,width:200, flex: 1 }} source={{ uri: item.image }}  />
                                 </CardItem>
                                 <CardItem>
