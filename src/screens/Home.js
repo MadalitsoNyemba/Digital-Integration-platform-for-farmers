@@ -4,7 +4,7 @@ import ajax from '../components/fetchHomeComponents.js';
 import { View, Text, ScrollView, RefreshControl, Image, SectionList, StatusBar } from 'react-native';
 import { Container, Header, Button, Separator, Icon, Left, Body, Title, Right, Content, List, ListItem, Thumbnail, Drawer, Card, CardItem, H1 } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
-import SingleProduct from './SingleProduct'
+
 import index from '@babel/template';
 
 export class Home extends Component {
