@@ -53,6 +53,7 @@ import { Footer, FooterTab, Button, Icon } from 'native-base';
 import Home from './src/screens/Home';
 import Products from './src/screens/Products';
 import Farmers from './src/screens/Farmers';
+import singleFarmer from './src/screens/singleFarmer';
 
 
 export default class TabNav extends Component{
@@ -66,7 +67,8 @@ const HomeNavigator = createAppContainer(createStackNavigator(
   {
     Home: { screen: Home},
     Products: { screen: Products },
-    Farmers: { screen: Farmers }
+    Farmers: { screen: Farmers },
+    singleFarmer: { screen: singleFarmer },
   },
   
   

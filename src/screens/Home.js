@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ajax from '../components/fetchHomeComponents.js';
 
 import { View, Text, ScrollView, RefreshControl, Image, SectionList, StatusBar } from 'react-native';
-import { Container, Header, Button, Separator, Icon, Left, Body, Title, Right, Content, List, ListItem, Thumbnail, Drawer, Card, CardItem, H1 } from 'native-base';
+import { Container, Header, Button, Separator, Icon, Left, Body, Title, Right, Content, List, ListItem, Thumbnail, Drawer, Card, CardItem, H1, Item } from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
 
 import index from '@babel/template';
@@ -35,10 +35,14 @@ export class Home extends Component {
             <StatusBar backgroundColor="#f4511e" />
                 <Content>
                     <View>
-                    <List>
-                       <Left>
-                           <Text>Products</Text>
+                        <Item>
+                    <Left>
+                           <Text style = {{fontWeight:'bold',fontSize:22}}>Products</Text>
                        </Left>
+                    </Item>
+                       
+                    <List>
+                       
                     <FlatList data={this.state.products}
                     horizontal ={true}
                                     onRefresh={() => this.onRefresh()}
@@ -46,7 +50,10 @@ export class Home extends Component {
                                     (   
                             <Card style={{ elevation: 1,borderRadius:4,margin:1, }}>
                             <Text></Text>
-                                <CardItem>
+                                <CardItem button onPress = {() =>this.props.navigation.navigate('Products',{
+                                    name:item.product_name
+                                            })
+                                            }>
                                     <Left>
                                     <Thumbnail source={{ uri: item.image }} />
                                         <Body>
@@ -65,13 +72,16 @@ export class Home extends Component {
                                         />
                                         </List>
                     <Text></Text>
-                    <Text></Text>
+                    <Item style={{margin:20}}>
                 <Left>
-                    <Text>Popular farmers</Text>
+                    <Text style = {{fontWeight:'bold',fontSize:22}}>Popular farmers</Text>
                 </Left>
                 <Right>
-                    <Text>View all</Text>
+                    <Text style = {{fontSize:20}} onPress = {() =>this.props.navigation.navigate
+                                            ('Farmers')}>View all</Text>
                 </Right>
+                </Item>
+                
                 <List>
                     <FlatList data={this.state.farmers}
                         onRefresh={() => this.onRefresh()}
@@ -80,7 +90,10 @@ export class Home extends Component {
                                 <CardItem cardBody button >
                                     <Image  style={{  flex: 1 ,height: null,width:null}} source={{ uri: item.image }}  />
                                 </CardItem>
-                                <CardItem>
+                                <CardItem button onPress = {() =>this.props.navigation.navigate('singleFarmer',{
+                                    name:item.first_name + ' ' + item.last_name
+                                            })
+                                            }>
                                     <Left>
                                         <Body>
                                             <Text >{item.first_name} {item.last_name}</Text>
