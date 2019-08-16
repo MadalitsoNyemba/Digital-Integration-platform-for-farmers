@@ -63,35 +63,33 @@ export class Home extends Component {
                                         </List>
                     
 
-                                        <List>
+                <List>
                     <FlatList data={this.state.farmers}
-                    
-                                    onRefresh={() => this.onRefresh()}
-                                    renderItem={({ item }) => (
-                                        <Card style={{ elevation: 3 }}>
-                                <CardItem >
-                                    <Left>
-                                    
-                                        <Body>
-                                            <Text >{item.first_name} {item.last_name}</Text>
-                                            <Text>Number: {item.phone_number}</Text>
-                                            
-                                            <Text note>@ - {item.location}</Text>
-                                        </Body>
-                                    </Left>
-                                </CardItem>
+                        onRefresh={() => this.onRefresh()}
+                        renderItem={({ item }) => (
+                            <Card style={{ elevation: 3 }}>
                                 <CardItem cardBody button >
                                     <Image  style={{ height: 180,width:200, flex: 1 }} source={{ uri: item.image }}  />
                                 </CardItem>
                                 <CardItem>
-                                    
-                                    <Text>This is</Text>
+                                    <Left>
+                                        <Body>
+                                            <Text >{item.first_name} {item.last_name}</Text>
+                                            <Text>Number: {item.phone_number}</Text>
+                                            <Text note>@ - {item.location}</Text>
+                                        </Body>
+                                    </Left>
+                                    <Right>
+                                        <Body>
+                                            <Text>Ratings</Text>    
+                                        </Body>
+                                    </Right>
                                 </CardItem>
                             </Card>
-                                    )}
-                                    keyExtractor={item => item.national_id}
-                                        />
-                                        </List>
+                        )}
+                        keyExtractor={item => item.national_id}
+                    />
+                </List>
                             
                         </View>
 
