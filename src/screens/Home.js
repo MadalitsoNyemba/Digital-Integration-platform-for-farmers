@@ -24,7 +24,7 @@ export class Home extends Component {
         this.setState({categories});
     }
     static navigationOptions = ({navigation}) => ({
-        title:'Mobile Market',
+        title:'Msika4Farmers',
         headerTintColor:'#fff',            
         headerTitleStyle : {textAlign: 'center', alignSelf: 'center'},
         headerStyle:{backgroundColor:'#f4511e'},
