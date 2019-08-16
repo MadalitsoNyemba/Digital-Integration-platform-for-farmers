@@ -30,6 +30,9 @@ export class Products extends Component {
                 <Left>
                     <Text style = {{fontWeight:'bold',fontSize:22}}>Products for  {this.props.navigation.state.params.name}</Text>
                 </Left>
+                <Right>
+                <Text style = {{fontWeight:'bold',fontSize:22}}>Call </Text>
+                </Right>
                 </Item>
                 <List>
                 <FlatList data={this.state.products}
