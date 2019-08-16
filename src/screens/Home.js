@@ -36,13 +36,16 @@ export class Home extends Component {
                 <Content>
                     <View>
                     <List>
-                       
+                       <Left>
+                           <Text>Products</Text>
+                       </Left>
                     <FlatList data={this.state.products}
                     horizontal ={true}
                                     onRefresh={() => this.onRefresh()}
                                     renderItem={({ item }) =>                
                                     (   
-                            <Card style={{ elevation: 1,borderRadius:4,margin:4, }}>
+                            <Card style={{ elevation: 1,borderRadius:4,margin:1, }}>
+                            <Text></Text>
                                 <CardItem>
                                     <Left>
                                     <Thumbnail source={{ uri: item.image }} />
@@ -61,15 +64,21 @@ export class Home extends Component {
                                     keyExtractor={item => item.product_name}
                                         />
                                         </List>
-                    
-
+                    <Text></Text>
+                    <Text></Text>
+                <Left>
+                    <Text>Popular farmers</Text>
+                </Left>
+                <Right>
+                    <Text>View all</Text>
+                </Right>
                 <List>
                     <FlatList data={this.state.farmers}
                         onRefresh={() => this.onRefresh()}
                         renderItem={({ item }) => (
                             <Card style={{ elevation: 3 }}>
                                 <CardItem cardBody button >
-                                    <Image  style={{ height: 180,width:200, flex: 1 }} source={{ uri: item.image }}  />
+                                    <Image  style={{  flex: 1 ,height: null,width:null}} source={{ uri: item.image }}  />
                                 </CardItem>
                                 <CardItem>
                                     <Left>
@@ -91,6 +100,7 @@ export class Home extends Component {
                         keyExtractor={item => item.national_id}
                     />
                 </List>
+                
                             
                         </View>
 
