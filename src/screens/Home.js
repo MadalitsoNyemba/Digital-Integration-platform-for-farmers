@@ -42,7 +42,7 @@ export class Home extends Component {
                                     onRefresh={() => this.onRefresh()}
                                     renderItem={({ item }) =>                
                                     (   
-                            <Card style={{ elevation: 1,borderRadius:4,margin:9, }}>
+                            <Card style={{ elevation: 1,borderRadius:4,margin:4, }}>
                                 <CardItem>
                                     <Left>
                                     <Thumbnail source={{ uri: item.image }} />
