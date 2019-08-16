@@ -82,6 +82,7 @@ export class Home extends Component {
                                     <Right>
                                         <Body>
                                             <Text>Ratings</Text>    
+                                            <Text>(20 reviews)</Text>    
                                         </Body>
                                     </Right>
                                 </CardItem>
