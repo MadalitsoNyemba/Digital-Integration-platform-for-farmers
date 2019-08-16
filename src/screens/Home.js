@@ -51,7 +51,8 @@ export class Home extends Component {
                             <Card style={{ elevation: 1,borderRadius:4,margin:1, }}>
                             <Text></Text>
                                 <CardItem button onPress = {() =>this.props.navigation.navigate('Products',{
-                                    name:item.product_name
+                                    name:item.product_name,
+                                    id:item.id
                                             })
                                             }>
                                     <Left>
@@ -74,7 +75,7 @@ export class Home extends Component {
                     <Text></Text>
                     <Item style={{margin:20}}>
                 <Left>
-                    <Text style = {{fontWeight:'bold',fontSize:22}}>Popular farmers</Text>
+                    <Text style = {{fontWeight:'bold',fontSize:22}}>Farmers with cheap products</Text>
                 </Left>
                 <Right>
                     <Text style = {{fontSize:20}} onPress = {() =>this.props.navigation.navigate
@@ -88,17 +89,18 @@ export class Home extends Component {
                         renderItem={({ item }) => (
                             <Card style={{ elevation: 3 }}>
                                 <CardItem cardBody button >
-                                    <Image  style={{  flex: 1 ,height: null,width:null}} source={{ uri: item.image }}  />
+                                    <Image  style={{  flex: 1 ,height: null,width:null}} source={{ uri: item.farmers.image }}  />
                                 </CardItem>
                                 <CardItem button onPress = {() =>this.props.navigation.navigate('singleFarmer',{
-                                    name:item.first_name + ' ' + item.last_name
+                                    name:item.farmers.first_name + ' ' + item.farmers.last_name,
+                                    id:item.farmers.id
                                             })
                                             }>
                                     <Left>
                                         <Body>
-                                            <Text >{item.first_name} {item.last_name}</Text>
-                                            <Text>Number: {item.phone_number}</Text>
-                                            <Text note>@ - {item.location}</Text>
+                                            <Text >{item.farmers.first_name} {item.farmers.last_name}</Text>
+                                            <Text>Number: {item.farmers.phone_number}</Text>
+                                            <Text note>@ - {item.farmers.location}</Text>
                                         </Body>
                                     </Left>
                                     <Right>
@@ -110,7 +112,7 @@ export class Home extends Component {
                                 </CardItem>
                             </Card>
                         )}
-                        keyExtractor={item => item.national_id}
+                        keyExtractor={item => item.farmers.national_id}
                     />
                 </List>
                 

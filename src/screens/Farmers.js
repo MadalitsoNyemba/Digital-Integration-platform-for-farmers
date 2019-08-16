@@ -36,7 +36,8 @@ export class Farmers extends Component {
                                     <Image  style={{  flex: 1 ,height: null,width:null}} source={{ uri: item.image }}  />
                                 </CardItem>
                                 <CardItem  button onPress = {() =>this.props.navigation.navigate('singleFarmer',{
-                                    name:item.first_name + ' ' + item.last_name
+                                    name:item.first_name + ' ' + item.last_name,
+                                    id:item.id
                                             })
                                             }>
                                     <Left>

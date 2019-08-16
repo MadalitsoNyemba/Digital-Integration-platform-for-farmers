@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ScrollView, RefreshControl,Image } from 'react-native';
 import { Container, Header, Button, Separator, Icon, Left, Body, Title, Right, Content, List, ListItem, Thumbnail, Drawer,Card, CardItem, Item} from 'native-base';
 import { FlatList } from 'react-native-gesture-handler';
-import ajax from '../components/fetchProducts.js';
+import ajax from '../components/fetchSingleFarmerProduct.js';
 
 export class Products extends Component {
     state = {
@@ -11,7 +11,7 @@ export class Products extends Component {
     }
 
     async componentDidMount() {
-        const products = await ajax.fetchProducts();
+        const products = await ajax.fetchSingleFarmerProduct(this.props.navigation.state.params.id);
         console.log(products);
         this.setState({products});
     }
@@ -38,15 +38,13 @@ export class Products extends Component {
                                     (   
                             <Card style={{ elevation: 1,borderRadius:4,margin:1, }}>
                             <Text></Text>
-                                <CardItem button onPress = {() =>this.props.navigation.navigate('Products',{
-                                    name:item.product_name
-                                            })
-                                            }>
+                                <CardItem >
                                     <Left>
-                                    <Thumbnail source={{ uri: item.image }} />
+                                    <Thumbnail source={{ uri: item.products.image }} />
                                         <Body>
-                                            <Text style = {{fontWeight:'bold',fontSize:24}} >{item.product_name}</Text>                                          
-                                            <Text>12 {item.product_name}</Text>                                          
+                                            <Text style = {{fontWeight:'bold',fontSize:24}} >{item.products.product_name}</Text>                                          
+                                            <Text>Going at MWK {item.price}/kg</Text>                                          
+                                            <Text>{item.status}</Text>                                          
                                         </Body>
                                     </Left>
                                 </CardItem>
@@ -56,7 +54,7 @@ export class Products extends Component {
                                 </CardItem>
                             </Card>
                                     )}
-                                    keyExtractor={item => item.product_name}
+                                    keyExtractor={item => item.products.product_name}
                                         />
                 </List>
                             
