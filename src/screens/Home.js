@@ -9,19 +9,19 @@ import index from '@babel/template';
 
 export class Home extends Component {
     state = {
-        items:[],
-        categories:[],
+        farmers:[],
+        products:[],
     }
 
     async componentDidMount() {
        
-        const items = await ajax.fetchTrendingItems();
-        console.log(items);
-        this.setState({items});
+        const farmers = await ajax.fetchFarmers();
+        console.log(farmers);
+        this.setState({farmers});
 
-        const categories = await ajax.fetchCategories();
-        console.log(categories);
-        this.setState({categories});
+        const products = await ajax.fetchProducts();
+        console.log(products);
+        this.setState({products});
     }
     static navigationOptions = ({navigation}) => ({
         title:'Msika4Farmers',
@@ -37,7 +37,7 @@ export class Home extends Component {
                     <View>
                     <List>
                        
-                    <FlatList data={this.state.categories}
+                    <FlatList data={this.state.products}
                     horizontal ={true}
                                     onRefresh={() => this.onRefresh()}
                                     renderItem={({ item }) =>                
@@ -47,8 +47,8 @@ export class Home extends Component {
                                     <Left>
                                     <Thumbnail source={{ uri: item.image }} />
                                         <Body>
-                                            <Text style = {{fontWeight:'bold',fontSize:24}} >{item.category}</Text>                                          
-                                            <Text>12 {item.category}</Text>                                          
+                                            <Text style = {{fontWeight:'bold',fontSize:24}} >{item.product_name}</Text>                                          
+                                            <Text>12 {item.product_name}</Text>                                          
                                         </Body>
                                     </Left>
                                 </CardItem>
@@ -58,13 +58,13 @@ export class Home extends Component {
                                 </CardItem>
                             </Card>
                                     )}
-                                    keyExtractor={item => item.category}
+                                    keyExtractor={item => item.product_name}
                                         />
                                         </List>
                     
 
                                         <List>
-                    <FlatList data={this.state.items}
+                    <FlatList data={this.state.farmers}
                     
                                     onRefresh={() => this.onRefresh()}
                                     renderItem={({ item }) => (
@@ -73,10 +73,10 @@ export class Home extends Component {
                                     <Left>
                                     
                                         <Body>
-                                            <Text >{item.item_name}</Text>
-                                            <Text>MWK {item.price}</Text>
+                                            <Text >{item.first_name} {item.last_name}</Text>
+                                            <Text>Number: {item.phone_number}</Text>
                                             
-                                            <Text note>@ - {item.shop_name}</Text>
+                                            <Text note>@ - {item.location}</Text>
                                         </Body>
                                     </Left>
                                 </CardItem>
@@ -89,7 +89,7 @@ export class Home extends Component {
                                 </CardItem>
                             </Card>
                                     )}
-                                    keyExtractor={item => item.item_name}
+                                    keyExtractor={item => item.national_id}
                                         />
                                         </List>
                             
